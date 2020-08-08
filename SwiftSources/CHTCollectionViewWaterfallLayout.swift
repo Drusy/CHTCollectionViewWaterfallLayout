@@ -169,7 +169,7 @@ public class CHTCollectionViewWaterfallLayout: UICollectionViewLayout {
     
     public weak var delegate: CHTCollectionViewDelegateWaterfallLayout?
     
-    init(delegate: CHTCollectionViewDelegateWaterfallLayout) {
+    public init(delegate: CHTCollectionViewDelegateWaterfallLayout) {
         super.init()
         
         self.delegate = delegate
