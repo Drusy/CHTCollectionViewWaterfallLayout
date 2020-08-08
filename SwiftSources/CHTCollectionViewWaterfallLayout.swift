@@ -159,12 +159,6 @@ public class CHTCollectionViewWaterfallLayout: UICollectionViewLayout {
         }
     }
 
-    public var delegate: CHTCollectionViewDelegateWaterfallLayout? {
-        get {
-            return collectionView!.delegate as? CHTCollectionViewDelegateWaterfallLayout
-        }
-    }
-
     private var columnHeights: [[CGFloat]] = []
     private var sectionItemAttributes: [[UICollectionViewLayoutAttributes]] = []
     private var allItemAttributes: [UICollectionViewLayoutAttributes] = []
@@ -172,6 +166,18 @@ public class CHTCollectionViewWaterfallLayout: UICollectionViewLayout {
     private var footersAttributes: [Int: UICollectionViewLayoutAttributes] = [:]
     private var unionRects: [CGRect] = []
     private let unionSize = 20
+    
+    public weak var delegate: CHTCollectionViewDelegateWaterfallLayout?
+    
+    init(delegate: CHTCollectionViewDelegateWaterfallLayout) {
+        super.init()
+        
+        self.delegate = delegate
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private func columnCount(forSection section: Int) -> Int {
         return delegate?.collectionView?(collectionView!, layout: self, columnCountFor: section) ?? columnCount

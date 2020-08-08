@@ -41,7 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func setupCollectionView(){
         
         // Create a waterfall layout
-        let layout = CHTCollectionViewWaterfallLayout()
+        let layout = CHTCollectionViewWaterfallLayout(delegate: self)
         
         // Change individual layout attributes for the spacing between cells
         layout.minimumColumnSpacing = 1.0
