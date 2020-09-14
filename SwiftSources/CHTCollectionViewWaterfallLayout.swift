@@ -219,17 +219,19 @@ public class CHTCollectionViewWaterfallLayout: UICollectionViewLayout {
 
     override public func prepare() {
         super.prepare()
+        
+        headersAttributes = [:]
+        footersAttributes = [:]
+        unionRects = []
+        allItemAttributes = []
+        sectionItemAttributes = []
+        columnHeights = []
 
         let numberOfSections = collectionView!.numberOfSections
         if numberOfSections == 0 {
             return
         }
 
-        headersAttributes = [:]
-        footersAttributes = [:]
-        unionRects = []
-        allItemAttributes = []
-        sectionItemAttributes = []
         columnHeights = (0 ..< numberOfSections).map { section in
             let columnCount = self.columnCount(forSection: section)
             let sectionColumnHeights = (0 ..< columnCount).map { CGFloat($0) }
